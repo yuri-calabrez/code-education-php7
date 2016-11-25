@@ -1,6 +1,6 @@
 {% extends '@layout/default.html.twig' %}
 
-{% block title %}Testeaa{% endblock %}
+{% block title %}Teste{% endblock %}
 
 {% block content %}
     <h2 class="text-center">Lista de clientes</h2>
@@ -9,24 +9,14 @@
         <tr>
             <th>Nome</th>
             <th>E-mail</th>
-            <th>Cpf</th>
-            <th>Logradouro</th>
-            <th>Cep</th>
-            <th>Cidade</th>
-            <th>Estado</th>
         </tr>
         </thead>
 
         <tbody>
-        {% for cli in clientes %}
+        {% for customer in customers %}
             <tr>
-                <td>{{ cli.cliente.nome }}</td>
-                <td>{{ cli.cliente.email }}</td>
-                <td>{{ cli.cliente.cpf }}</td>
-                <td>{{ cli.logradouro }}</td>
-                <td>{{ cli.cep }}</td>
-                <td>{{ cli.cidade }}</td>
-                <td>{{ cli.estado }}</td>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.email }}</td>
             </tr>
         {% endfor %}
         </tbody>

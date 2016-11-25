@@ -14,3 +14,11 @@ O Endereço deve se relacionar com o Cliente, ou seja, deve ter um relacionando 
 
 No middleware de rota "Teste" que já temos, crie alguns cadastros de Cliente e de Endereço, relacionando-os.
 Mostre estes dados no template (organize os dados mostrados).
+
+##Fase 3 - Implementando o CRUD
+Nesta fase você deverá terminar de implementar todo o CRUD de contatos, portanto você deverá fazer também a parte de exclusão de contatos.
+A rota de exclusão deverá ser: /admin/customer/{id}/delete.
+
+Monte um formulário para mostrar os dados do contato e um botão para celebrar a exclusão do mesmo.
+
+Dica: No método remove() do CustomerRepository, você não precisa retornar a entidade.

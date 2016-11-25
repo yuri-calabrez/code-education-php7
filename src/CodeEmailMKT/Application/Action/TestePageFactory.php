@@ -1,7 +1,8 @@
 <?php
 
-namespace CodeEmailMKT\Action;
+namespace CodeEmailMKT\Application\Action;
 
+use CodeEmailMKT\Domain\Persistence\CustomerRepositoryInterface;
 use Doctrine\ORM\EntityManager;
 use Interop\Container\ContainerInterface;
 use Zend\Expressive\Template\TemplateRendererInterface;
@@ -14,6 +15,6 @@ class TestePageFactory
             ? $container->get(TemplateRendererInterface::class)
             : null;
 
-        return new TestePageAction($container->get(EntityManager::class), $template);
+        return new TestePageAction($container->get(CustomerRepositoryInterface::class), $template);
     }
 }
