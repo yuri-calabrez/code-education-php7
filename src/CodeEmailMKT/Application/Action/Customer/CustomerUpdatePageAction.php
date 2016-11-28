@@ -35,13 +35,13 @@ class CustomerUpdatePageAction
     {
         $id = $request->getAttribute("id");
         $entity = $this->repository->find($id);
-        if ($request->getMethod() == "POST") {
+        if ($request->getMethod() == "PUT") {
             $data = $request->getParsedBody();
             $entity->setName($data['name']);
             $entity->setEmail($data['email']);
 
-            $this->repository->update($entity);
             $flash = $request->getAttribute('flash');
+            $this->repository->update($entity);
             $flash->setMessage('success', "Contato editado com sucesso!");
             $uri = $this->router->generateUri('customer.list');
             return new RedirectResponse($uri);

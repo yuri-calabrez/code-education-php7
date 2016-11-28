@@ -35,13 +35,9 @@ class CustomerRemovePageAction
     {
         $id = $request->getAttribute("id");
         $entity = $this->repository->find($id);
-        if ($request->getMethod() == "POST") {
-            $data = $request->getParsedBody();
-            $entity->setName($data['name']);
-            $entity->setEmail($data['email']);
-
-            $this->repository->remove($entity);
+        if ($request->getMethod() == "DELETE") {
             $flash = $request->getAttribute('flash');
+            $this->repository->remove($entity);
             $flash->setMessage('success', "Contato removido com sucesso!");
             $uri = $this->router->generateUri('customer.list');
             return new RedirectResponse($uri);
