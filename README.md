@@ -21,4 +21,8 @@ A rota de exclusão deverá ser: /admin/customer/{id}/delete.
 
 Monte um formulário para mostrar os dados do contato e um botão para celebrar a exclusão do mesmo.
 
-Dica: No método remove() do CustomerRepository, você não precisa retornar a entidade.
+
+##Fase 4 - Finalizando CRUD de Customer
+Nesta fase você deverá implementar:
+* A integração com o Zend\Form em todo CRUD de customers
+* A fixture de Customer para criar 100 registros no banco de dados

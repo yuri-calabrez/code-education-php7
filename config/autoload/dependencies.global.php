@@ -26,6 +26,7 @@ return [
             CustomerRepositoryInterface::class => CustomerRepositoryFactory::class,
             \Aura\Session\Session::class => \DaMess\Factory\AuraSessionFactory::class,
             FlashMessageInterface::class => FlashMessageFactory::class,
+            'doctrine:fixtures_cmd:load'   => \CodeEdu\FixtureFactory::class,
 
         ],
         'aliases' => [

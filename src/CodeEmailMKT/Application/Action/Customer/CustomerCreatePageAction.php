@@ -30,7 +30,11 @@ class CustomerCreatePageAction
     private $form;
 
 
-    public function __construct(CustomerRepositoryInterface $repository, Template\TemplateRendererInterface $template, RouterInterface $router, CustomerForm $form)
+    public function __construct(CustomerRepositoryInterface $repository,
+                                Template\TemplateRendererInterface $template,
+                                RouterInterface $router,
+                                CustomerForm $form
+    )
     {
         $this->template = $template;
         $this->repository = $repository;

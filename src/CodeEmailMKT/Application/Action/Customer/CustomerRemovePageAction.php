@@ -24,21 +24,29 @@ class CustomerRemovePageAction
      * @var RouterInterface
      */
     private $router;
+    /**
+     * @var CustomerForm
+     */
+    private $form;
 
-    public function __construct(CustomerRepositoryInterface $repository, Template\TemplateRendererInterface $template, RouterInterface $router)
+    public function __construct(CustomerRepositoryInterface $repository,
+                                Template\TemplateRendererInterface $template,
+                                RouterInterface $router,
+                                CustomerForm $form
+    )
     {
         $this->template = $template;
         $this->repository = $repository;
         $this->router = $router;
+        $this->form = $form;
     }
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
     {
         $id = $request->getAttribute("id");
         $entity = $this->repository->find($id);
-        $form = new CustomerForm();
-        $form->add(new HttpMethodElement('DELETE'));
-        $form->bind($entity);
+        $this->form->add(new HttpMethodElement('DELETE'));
+        $this->form->bind($entity);
         if ($request->getMethod() == "DELETE") {
             $flash = $request->getAttribute('flash');
             $this->repository->remove($entity);
@@ -46,6 +54,6 @@ class CustomerRemovePageAction
             $uri = $this->router->generateUri('customer.list');
             return new RedirectResponse($uri);
         }
-        return new HtmlResponse($this->template->render("app::customer/delete", ["form" => $form]));
+        return new HtmlResponse($this->template->render("app::customer/delete", ["form" => $this->form]));
     }
 }
