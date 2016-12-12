@@ -5,6 +5,7 @@ namespace CodeEmailMKT\Application\Action\Customer;
 use CodeEmailMKT\Application\Form\CustomerForm;
 use CodeEmailMKT\Domain\Entity\Customer;
 use CodeEmailMKT\Domain\Persistence\CustomerRepositoryInterface;
+use CodeEmailMKT\Domain\Service\FlashMessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
@@ -51,7 +52,7 @@ class CustomerCreatePageAction
                 $entity = $this->form->getData();
                 $this->repository->create($entity);
                 $flash = $request->getAttribute('flash');
-                $flash->setMessage('success', "Contato cadastrado com sucesso!");
+                $flash->setMessage(FlashMessageInterface::MESSAGE_SUCCESS, "Contato cadastrado com sucesso!");
                 $uri = $this->router->generateUri('customer.list');
                 return new RedirectResponse($uri);
             }
