@@ -12,7 +12,7 @@ use Zend\Expressive\Template\TemplateRendererInterface;
 
 class CustomerRemovePageFactory
 {
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container) : CustomerRemovePageAction
     {
         $template = $container->get(TemplateRendererInterface::class);
         $repository = $container->get(CustomerRepositoryInterface::class);

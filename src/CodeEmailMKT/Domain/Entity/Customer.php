@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Yuri
- * Date: 23/11/2016
- * Time: 18:28
- */
-
+declare(strict_types = 1);
 namespace CodeEmailMKT\Domain\Entity;
 
 
@@ -44,7 +38,7 @@ class Customer
     /**
      * @param mixed $name
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -60,7 +54,7 @@ class Customer
     /**
      * @param mixed $email
      */
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }

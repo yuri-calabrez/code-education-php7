@@ -11,7 +11,7 @@ use Zend\Hydrator\ClassMethods;
 
 class CustomerFormFactory
 {
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container) : CustomerForm
     {
        $form = new CustomerForm();
        $form->setHydrator(new ClassMethods());

@@ -15,7 +15,7 @@ use Interop\Container\ContainerInterface;
 
 class CustomerRepositoryFactory
 {
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container) : CustomerRepository
     {
         $entityManager = $container->get(EntityManager::class);
         return $entityManager->getRepository(Customer::class);
