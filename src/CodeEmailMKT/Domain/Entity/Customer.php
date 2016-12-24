@@ -3,6 +3,9 @@ declare(strict_types = 1);
 namespace CodeEmailMKT\Domain\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class Customer
 {
     private $id;
@@ -10,6 +13,14 @@ class Customer
     private $name;
 
     private $email;
+
+    private $tags;
+
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
+
 
     /**
      * @return mixed
@@ -57,6 +68,35 @@ class Customer
     public function setEmail(string $email)
     {
         $this->email = $email;
+    }
+
+    public function getTags() : Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTags(Collection $tags)
+    {
+        /** @var Tag $tag */
+        foreach ($tags as $tag) {
+            //Adicionando o customer na tag
+            $tag->getCustomers()->add($this);
+            //Adicionando tag no customer
+            $this->tags->add($tag);
+        }
+        return $this;
+    }
+
+    public function removeTags(Collection $tags)
+    {
+        /** @var Tag $tag */
+        foreach ($tags as $tag) {
+            //Removendo o customer da tag
+            $tag->getCustomers()->removeElement($this);
+            //Removendo tag do customer
+            $this->tags->removeElement($tag);
+        }
+        return $this;
     }
 
 }

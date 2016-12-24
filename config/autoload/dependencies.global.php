@@ -1,6 +1,8 @@
 <?php
+use CodeEmailMKT\Domain\Persistence\TagRepositoryInterface;
 use CodeEmailMKT\Domain\Service\AuthInterface;
 use CodeEmailMKT\Domain\Service\FlashMessageInterface;
+use CodeEmailMKT\Infrastructure\Persistence\Doctrine\Repository\TagRepositoryFactory;
 use CodeEmailMKT\Infrastructure\Service\AuthServiceFactory;
 use CodeEmailMKT\Infrastructure\Service\FlashMessageFactory;
 use Zend\Expressive\Application;
@@ -26,6 +28,7 @@ return [
             Application::class => ApplicationFactory::class,
             Helper\UrlHelper::class => Helper\UrlHelperFactory::class,
             CustomerRepositoryInterface::class => CustomerRepositoryFactory::class,
+            TagRepositoryInterface::class => TagRepositoryFactory::class,
             FlashMessageInterface::class => FlashMessageFactory::class,
             'doctrine:fixtures_cmd:load'   => \CodeEdu\FixtureFactory::class,
             AuthInterface::class => AuthServiceFactory::class

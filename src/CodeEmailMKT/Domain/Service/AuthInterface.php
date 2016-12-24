@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace CodeEmailMKT\Domain\Service;
 
 
-use CodeEmailMKT\Domain\Entity\User;
 
 interface AuthInterface
 {
@@ -12,7 +11,7 @@ interface AuthInterface
 
     public function isAuth() : bool ;
 
-    public function getUser() : User;
+    public function getUser();
 
     public function destroy();
 }
